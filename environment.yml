@@ -1,0 +1,10 @@
+name: py_utils
+channels:
+  - conda-forge
+dependencies:
+  # Utilities not strictly needed for py_utils to install.
+  - black # Code formatter
+  - isort # Sort imports
+  # Required for py_utils.
+  - python
+  - tqdm
