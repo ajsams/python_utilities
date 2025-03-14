@@ -1,6 +1,6 @@
 # python_utilities
 
-Python utilities and context managers.
+Custom python utilities and context managers.
 
 ## Adding `py_utils` to a Fresh Mamba/Conda Environment
 
