@@ -2,6 +2,11 @@
 
 Custom python utilities and context managers.
 
+## `py_utils` Package Summary
+
+- `logger.py` - A wrapper for the python standard library `logging` module. Provides a custom `logger.Logger()` class, a `@log_function` decorator to add consistent decoration to functions in a project, and a single instance of the `Logger` class (`logger.logger`).
+- `timer.py` - A context manager to time blocks of code with the python standard library `time` module. Includes optional functionality to add a custom logger for logging time context. Also includes an optional timer bar using `tqdm`.
+
 ## Adding `py_utils` to a Fresh Mamba/Conda Environment
 
 ### Install [Miniforge](https://github.com/conda-forge/miniforge).
