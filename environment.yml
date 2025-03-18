@@ -6,5 +6,8 @@ dependencies:
   - black # Code formatter
   - isort # Sort imports
   # Required for py_utils.
-  - python
+  - python>=3.6
   - tqdm
+  - pip:
+      - setuptools>=64
+      - wheel
