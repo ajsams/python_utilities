@@ -40,52 +40,51 @@ Using `--name` here explicitly to ensure we are creating and updating the same e
 
 ## Adding `py_utils` to an Existing Mamba/Conda Environment
 
-If you want to install this package into an existing mamba/conda environment, you can use the `environment.yml` file to update that environment. This is useful if you already have an environment set up and want to add the dependencies listed in the `environment.yml` file.
+If you want to add this package to an existing conda environment, you have several options, two are highlighted here:
 
-### Steps to Update an Existing Environment
+### Add the package as non-editable directly from the repository
 
-1. **Activate the existing environment**:
+First, add this line to the pip section of your `environment.yml` file. This will download and install the package as-is directly from the repository.
 
-   ```bash
-   mamba activate <existing_env_name>
-   ```
-
-   Replace `<existing_env_name>` with the name of your existing environment.
-
-2. **Update the environment using the `environment.yml` file**:
-
-   ```bash
-   mamba env update --name <existing_env_name> --file environment.yml
-   ```
-
-   This command will update the specified environment with the dependencies listed in the `environment.yml` file.
-
-   Adding the `--prune` flag to this command will remove any dependencies in the current environment that are not needed to run the `py_utils` library.
-
-3. **Install the local library in editable mode**:
-
-   After updating the environment, you can install the local library in editable mode:
-
-   ```bash
-   pip install -e .
-   ```
-
-### Example
-
-Assuming you have an existing environment named `myenv`, you can update it as follows:
-
-```bash
-mamba activate myenv
-mamba env update --name myenv --file environment.yml
-pip install -e .
+```yaml
+pip:
+  - git+https://github.com/ajsams/python_utilities#egg=py_utils
 ```
 
-This will ensure that your existing environment `myenv` is updated with the dependencies from the `environment.yml` file and that the local library is installed in editable mode.
-
-## Installing the local library with pip editable
-
-After installing and activating the local conda/mamba environment, from the root of the `py_utils` repository run:
+Second, update your conda environment from the `environment.yml` file.
 
 ```bash
-pip install -e .
+conda env update --file environment.yml --prune
+```
+
+### Download the package and install as editable
+
+This option is useful if you wish to update the code in this repository to use in your project.
+
+First, clone the repository.
+
+```bash
+git clone https://github.com/ajsams/python_utilities
+```
+
+Second, modify the `environment.yml` file to install the package as editable. Add this line:
+
+```yaml
+pip: -e /path/to/local/python_utilities
+```
+
+Finally, update your environment:
+
+```bash
+conda env update --file environment.yml --prune
+```
+
+NOTE - This list is not exhaustive, and there are other ways you may prefer to add this code to your project.
+
+### Verify the install
+
+You may want to verify that py_utils was successfully installed to your environment.
+
+```bash
+python -c "import py_utils; print(py_utils.__version__)"
 ```
